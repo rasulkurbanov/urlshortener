@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/sketchy/bootstrap.min.css"
+    />
+    <title>john's</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <form method="POST" action="/shorting">
+        <div class="form-group w-75">
+          <label class="form-label" for="fullUrl"></label>
+          <input
+            type="text"
+            name="fullUrl"
+            class="form-control"
+            placeholder="Linkni kiriting"
+            id="fullUrl"
+          />
+          <button type="submit" class="btn btn-primary">Tasdiqlash</button>
+        </div>
+      </form>
+
+      <table class="table table-hover w-100">
+        <thead style="margin-bottom: 5px">
+          <tr>
+            <th scope="col" style="color: red">To'liq havola</th>
+            <th scope="col" style="color: red">Qisqartirilgan havola</th>
+            <th scope="col" style="color: red">Copy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% foundUrls.forEach( (shortUrl) => { %>
+          <tr class="table-primary">
+            <td
+              scope="row"
+              style="
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                max-width: 0;
+              "
+            >
+              <a href="<%= shortUrl.full %>"><%= shortUrl.full %></a>
+            </td>
+            <td>
+              <a id="shortUrl" style="color: green" href="<%= shortUrl.short %>"
+                ><%= shortUrl.short %></a
+              >
+            </td>
+            <td>
+              <button id="copyBtn" type="button" class="btn btn-primary" onclick="copyElementText()">
+                copy
+              </button>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function copyElementText() {
+        var text = document.getElementById('shortUrl').innerText;
+        var elem = document.createElement("textarea");
+        document.body.appendChild(elem);
+        elem.value = text;
+        elem.select();
+        document.execCommand("copy");
+        document.body.removeChild(elem);
+      }
+    </script>
+  </body>
+</html>
