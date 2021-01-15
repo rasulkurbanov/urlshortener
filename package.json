@@ -1,5 +1,5 @@
 {
-  "name": "urlshortener",
+  "name": "It provides short URLs for any sites",
   "version": "1.0.0",
   "description": "used for shortening long and not understandable URL links ",
   "main": "app.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js"
   },
-  "author": "Rasul Kurbanov",
+  "author": "Rasuljon Kurbanov",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.5",
